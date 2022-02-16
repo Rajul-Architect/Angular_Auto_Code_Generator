@@ -1,0 +1,10 @@
+{
+  "$schema": "../node_modules/@angular-devkit/schematics/collection-schema.json",
+  "schematics": {
+    "base-generator": {
+      "description": "Add base libraries and css files to Project",
+      "factory": "./base-generator/index#newRepo",
+      "schema": "./base-generator/schema.json"
+    }
+  }
+}
