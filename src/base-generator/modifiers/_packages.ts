@@ -11,8 +11,6 @@ export function updateJSONFiles(_options: any): Rule {
         const file = tree.read(path);
         const json = JSON.parse(file!.toString());
         const angularJson = JSON.parse(tree.read(angularJSONPath)!.toString());
-        console.log(_options)
-
         json.scripts = {
             ...json.scripts,
             'build:prod': 'ng build --prod',

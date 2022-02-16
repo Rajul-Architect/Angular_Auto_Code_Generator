@@ -78,7 +78,6 @@ export function addDeclarations(_options: any): Rule {
                     updateRecorder.insertLeft(change.pos, change.toAdd);
                 }
             }
-            console.log(updateRecorder);
             tree.commitUpdate(updateRecorder);
         })
         return tree;
