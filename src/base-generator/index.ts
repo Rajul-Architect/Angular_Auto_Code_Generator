@@ -46,13 +46,10 @@ export function newRepo(_options: any): Rule {
 
 function generateRepo(name: string): Rule {
   return externalSchematic('@schematics/angular', 'ng-new', {
+    version: '*',
     name,
-    version: '12.0.0',
     directory: name,
-    routing: false,
     style: 'scss',
-    inlineStyle: false,
-    inlineTemplate: false,
     skipInstall: true
   });
 }

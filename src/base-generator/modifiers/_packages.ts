@@ -43,12 +43,13 @@ export function updateJSONFiles(_options: any): Rule {
         }
 
         json.devDependencies['ngx-bootstrap'] = '*';
-        json.devDependencies['bootstrap'] = '*';
+        json.devDependencies['bootstrap'] = '^4.5.2';
         json.devDependencies['jquery'] = '*';
         let projects = JSON.parse(JSON.stringify(angularJson.projects));
         projects[Object.keys(angularJson.projects)[0]].architect.build.options.styles = [
             'node_modules/bootstrap/dist/css/bootstrap.min.css',
-            'src/assets/css/vendor.css'];
+            'src/assets/css/vendor.scss',
+            'src/styles.scss'];
         projects[Object.keys(angularJson.projects)[0]].architect.build.options.scripts = [
             "node_modules/jquery/dist/jquery.min.js",
             "node_modules/bootstrap/dist/js/bootstrap.min.js"]
