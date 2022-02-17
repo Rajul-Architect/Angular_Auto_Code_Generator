@@ -32,13 +32,13 @@ export function updateJSONFiles(_options: any): Rule {
             });
             json.husky.hooks['pre-commit'] = hooks.join(' && ');
             json.devDependencies.husky = '*';
+            if (_options.precommit.indexOf('prettier') !== -1) {
+                json.devDependencies.prettier = '^2.0.0';
+                json.scripts.prettier = 'pretty-quick --staged --pattern \"apps/**/**/*.{ts,scss,html}\"';
+                json.husky.hooks['pre-commit'] += ' && pretty-quick --staged --pattern \"apps/**/**/*.{ts,scss,html}\"';
+            }
         }
 
-        if (_options.precommit.indexOf('prettier') !== -1) {
-            json.devDependencies.prettier = '^2.0.0';
-            json.scripts.prettier = 'pretty-quick --staged --pattern \"apps/**/**/*.{ts,scss,html}\"';
-            json.husky.hooks['pre-commit'] += ' && pretty-quick --staged --pattern \"apps/**/**/*.{ts,scss,html}\"';
-        }
 
         json.devDependencies['ngx-bootstrap'] = '*';
         json.devDependencies['bootstrap'] = '^4.5.2';
