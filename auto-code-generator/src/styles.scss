@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+@import 'src/assets/css/globals';
+
+.side-padding-20-per{
+    padding: 0 20% 0 20%;
+}
+.error{
+    color: $base-error;
+}
+.route-container{
+    padding-top: 8%;
+}

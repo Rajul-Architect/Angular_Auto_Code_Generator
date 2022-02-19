@@ -7,17 +7,18 @@ export class AngularService {
 
     constructor(private config: ConfigService) { }
 
-    async createProject(body: ProjectDetailsDTO): Promise<any> {
-        return new Promise((resolve, reject) => {
+    async createProject(body: ProjectDetailsDTO): Promise<boolean> {
+        return new Promise((resolve: any) => {
             const exec = require('child_process').exec;
             const cmd = this.createCommand(body);
             exec(cmd, {
                 cwd: this.config.get<string>('PROJECT_LOCATION')
             }, (error, stdout, stderr) => {
                 if (error) {
-                    reject(stderr)
+                    resolve(false);
                 }
-                resolve('Created');
+                console.log(stdout);
+                resolve(true);
             });
         });
     }
