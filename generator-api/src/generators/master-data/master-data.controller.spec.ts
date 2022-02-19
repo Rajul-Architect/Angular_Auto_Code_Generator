@@ -1,4 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
+import { MasterDataDto } from '../dto/master-data.dto';
 import { MasterDataController } from './master-data.controller';
 import { MasterDataService } from './master-data.service';
 
@@ -14,7 +15,13 @@ describe('MasterDataController', () => {
     controller = module.get<MasterDataController>(MasterDataController);
   });
 
-  it('should be defined', () => {
-    expect(controller).toBeDefined();
+  it('should return master data', (done) => {
+    const data = new MasterDataDto(
+      ['data-grid', 'date-picker'],
+      ['test', 'lint', 'prettier'],
+    );
+    const response = controller.getData();
+    expect(response).toEqual(data);
+    done()
   });
 });

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService, AppConstantsHelper, MasterData, Project } from 'src/app/app-common/app-common.module';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-project-generation',
@@ -21,14 +22,7 @@ export class ProjectGenerationComponent implements OnInit {
   }
 
   generateProject(): void {
-    this.service.generateAndDownloadProject(AppConstantsHelper.types.angular, this.model).subscribe((data: any) => {
-      const a = document.createElement('a');
-      const myBufferData = new Uint8Array(data);
-      const blob = new Blob([myBufferData], { type: 'application/zip' });
-      a.href = window.URL.createObjectURL(blob);
-      a.download = 'project.zip';
-      a.click();
-    })
+    this.service.generateAndGetZipUrl(AppConstantsHelper.types.angular, this.model);
   }
 
 }

@@ -15,9 +15,9 @@ export class AngularService {
                 cwd: this.config.get<string>('PROJECT_LOCATION')
             }, (error, stdout, stderr) => {
                 if (error) {
+                    console.log(error);
                     resolve(false);
                 }
-                console.log(stdout);
                 resolve(true);
             });
         });

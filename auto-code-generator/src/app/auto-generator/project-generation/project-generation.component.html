@@ -3,7 +3,7 @@
         <form (ngSubmit)="f.valid && generateProject()" name="form" #f="ngForm" novalidate>
             <div class="form-group">
                 <label for="projectName">Name</label>
-                <input class="form-control" type="text" [(ngModel)]="model.name" #name="ngModel" id="projectName"
+                <input class="form-control" type="text" [(ngModel)]="model.projectName" #name="ngModel" id="projectName"
                     name="projectName" required>
                 <span class="error" *ngIf="f.submitted && !name.valid">Name is required</span>
             </div>

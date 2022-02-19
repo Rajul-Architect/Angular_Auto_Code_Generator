@@ -1,10 +1,10 @@
 export class Project {
-    public name: string;
+    public projectName: string;
     public applicationName: string;
     public components: string;
     public hooks: string;
-    constructor(name: string, appName: string, components: string, hooks: string) {
-        this.name = name;
+    constructor(projectName: string, appName: string, components: string, hooks: string) {
+        this.projectName = projectName;
         this.applicationName = appName;
         this.components = components;
         this.hooks = hooks;

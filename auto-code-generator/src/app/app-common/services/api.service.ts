@@ -16,7 +16,9 @@ export class ApiService {
     return this.http.get(this.url + 'master-data');
   }
 
-  generateAndDownloadProject(type: string, data: Project) {
-    return this.http.post(this.url + type, data);
+  generateAndGetZipUrl(type: string, data: Project): any {
+    return this.http.post(this.url + type, data).subscribe((data: any) => {
+      window.location.href = `${this.url + type}?fileName=${data.fileName}`;
+    });
   }
 }
