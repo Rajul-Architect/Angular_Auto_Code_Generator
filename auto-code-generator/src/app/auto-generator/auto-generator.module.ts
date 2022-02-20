@@ -4,8 +4,6 @@ import { ProjectGenerationComponent } from './project-generation/project-generat
 import { AutoGeneratorRoutingModule } from './auto-generator-routing.module';
 import { FormsModule } from '@angular/forms';
 
-
-
 @NgModule({
   declarations: [ProjectGenerationComponent],
   imports: [
