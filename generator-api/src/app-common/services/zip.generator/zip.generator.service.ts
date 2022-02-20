@@ -12,4 +12,8 @@ export class ZipGeneratorService {
     removeDirectory(path): void {
         fs.rmdirSync(path, { recursive: true });
     }
+
+    removeFile(path: string): void {
+        fs.unlinkSync(path);
+    }
 }

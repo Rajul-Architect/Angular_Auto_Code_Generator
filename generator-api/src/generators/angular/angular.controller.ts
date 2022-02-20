@@ -37,5 +37,8 @@ export class AngularController {
             'attachment; filename="project.zip"',
         );
         file.pipe(response);
+        setTimeout(x => {
+            this.zipService.removeFile(query.fileName);
+        }, 2000);
     }
 }

@@ -16,9 +16,12 @@ export class ApiService {
     return this.http.get(this.url + 'master-data');
   }
 
-  generateAndGetZipUrl(type: string, data: Project): any {
-    return this.http.post(this.url + type, data).subscribe((data: any) => {
-      window.location.href = `${this.url + type}?fileName=${data.fileName}`;
+  generateAndGetZipUrl(type: string, data: Project): Promise<boolean> {
+    return new Promise<boolean>(resolve => {
+      this.http.post(this.url + type, data).subscribe((data: any) => {
+        window.location.href = `${this.url + type}?fileName=${data.fileName}`;
+        resolve(true);
+      });
     });
   }
 }

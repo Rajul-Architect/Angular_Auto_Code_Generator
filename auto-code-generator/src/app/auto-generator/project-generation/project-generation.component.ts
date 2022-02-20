@@ -10,9 +10,11 @@ import { environment } from 'src/environments/environment';
 export class ProjectGenerationComponent implements OnInit {
   public model: Project;
   public masterData: MasterData;
+  public isGenerating: boolean;
   constructor(private service: ApiService) {
     this.model = new Project('', '', '', '');
     this.masterData = new MasterData([], []);
+    this.isGenerating = false;
   }
 
   ngOnInit(): void {
@@ -22,7 +24,10 @@ export class ProjectGenerationComponent implements OnInit {
   }
 
   generateProject(): void {
-    this.service.generateAndGetZipUrl(AppConstantsHelper.types.angular, this.model);
+    this.isGenerating = true;
+    this.service.generateAndGetZipUrl(AppConstantsHelper.types.angular, this.model).then(done => {
+      this.isGenerating = false;
+    })
   }
 
 }
