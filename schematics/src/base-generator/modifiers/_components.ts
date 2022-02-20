@@ -67,6 +67,7 @@ export function addDeclarations(_options: any): Rule {
             );
             const updateRecorder = tree.beginUpdate(modulePath);
             const components = _options.components.split(',');
+            const totalChanges: InsertChange[] = [];
             components.forEach((element: any) => {
                 const changes = addDeclarationToModule(
                     source,
@@ -74,13 +75,14 @@ export function addDeclarations(_options: any): Rule {
                     map[element],
                     './' + element + '/' + element + '.component'
                 ) as InsertChange[];
-                for (const change of changes) {
-                    if (change instanceof InsertChange) {
-                        updateRecorder.insertLeft(change.pos, change.toAdd);
-                    }
-                }
-                tree.commitUpdate(updateRecorder);
+                totalChanges.push(...changes)
             });
+            for (const change of totalChanges) {
+                if (change instanceof InsertChange) {
+                    updateRecorder.insertLeft(change.pos, change.toAdd);
+                }
+            }
+            tree.commitUpdate(updateRecorder);
         }
         return tree;
     };
